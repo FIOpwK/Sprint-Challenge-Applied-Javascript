@@ -66,19 +66,18 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
     // according to return of req
 //    this time res.<item> works
     const articles = res.data.articles;
-    // console.log(articles)
-    
+    console.log(articles)
+
     // You will be creating a component for each 'article' in the list.
     const article_list = Object.entries(articles);
     console.log(article_list)
    
     //use return for iteration component
-    // article_list.forEach( el => {
-    
-    // el[1].forEach(rel => {
-    //     cards_article.appendChild(cardCreation(rel))
+    article_list.forEach( el => {
+    //      el[1].forEach(rel => {
+           cards_article.appendChild(cardCreation(el))
+      })
     // })
-// })
 
 
 
