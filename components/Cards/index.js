@@ -1,8 +1,6 @@
 // STEP 3: Create Article cards.
 // -----------------------
-// Send an HTTP GET request to the following address: https://lambda-times-backend.herokuapp.com/articles
 // Stduy the response data you get back, closely.
-// You will be creating a component for each 'article' in the list.
 // This won't be as easy as just iterating over an array though.
 //
 //   </div>
@@ -39,8 +37,8 @@ function cardCreation(comp) {
     //     <span>By {authors name}</span>
     const span = document.createElement('span')
     span.textContent = `By ${res.name}`; 
-
-
+    
+    
     card.appendChild(headline)
     card.appendChild(author)
     author.appendChild(img_container)
@@ -51,3 +49,31 @@ function cardCreation(comp) {
     return card;
 }
 
+// Send an HTTP GET request to the following address: 
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+.then((res => {
+    console.log(res)
+    
+    /*
+    articles:
+    javascript: (4)
+    bootstrap: (3)
+    technology: (3)
+    jquery: (3) 
+    node: (2) 
+    */
+   // according to return of req
+   const articles = res.data.articles;
+   
+   // You will be creating a component for each 'article' in the list.
+   const article_list = Object.entries(articles);
+
+   console.log(article_list)
+   
+
+}))
+
+.catch((err => {
+    console.log(err)
+}))
