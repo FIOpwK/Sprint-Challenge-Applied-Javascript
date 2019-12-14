@@ -9,7 +9,6 @@
 //    <div class="tab">topic here</div>
 
 // element to append return from function
-const tabs = document.querySelector('.topics')
 
 // create new tab function
 function newTabComponent(el) {
@@ -17,12 +16,14 @@ function newTabComponent(el) {
     const tab = document.createElement('div')
     tab.classList.add('tab')
     tab.textContent = el;
-
     
-
+    
+    
     return tab;
 }
 
+// select parent element to append
+const tabs = document.querySelector('.topics')
 
 // axios work
 axios.get(' https://lambda-times-backend.herokuapp.com/topics')
@@ -30,11 +31,13 @@ axios.get(' https://lambda-times-backend.herokuapp.com/topics')
     console.log(res)
 
     // res.(whatever we get back)
-    const newTabComponent = res.topics;
+    // create a new array 
+    // needs res.data.topics to work (res.topics doesn't)
+    const tabcomponent = res.data.topics;
 
-    newTabComponent.forEach(element => {
-        tabs.append(newTabComponent(element))
-    });
+    tabcomponent.forEach(el => {
+        tabs.appendChild(newTabComponent(el))
+    })
 
 })
 .catch((err) => {
