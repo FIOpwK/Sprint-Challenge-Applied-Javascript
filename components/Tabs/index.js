@@ -11,12 +11,24 @@
 axios.get(' https://lambda-times-backend.herokuapp.com/topics')
 .then((res) => {
     console.log(res)
+    newTabComponent(res.data)
 
-    const tab = document.createElement('div')
-    tab.classList.add('tab')
 })
 .catch((err) => {
     console.log(err)
 })
+
+const tabs = document.querySelector('.topics')
+
+function newTabComponent(el) {
+    
+    const tab = document.createElement('div')
+    tab.classList.add('tab')
+
+    
+
+
+    return tab;
+}
 
 

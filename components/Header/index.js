@@ -29,4 +29,7 @@ function Header() {
     return header;
 }
 
-const headerComponent = document.querySelector('.header-container').appendChild(header);
+const headerComponent = document.querySelector('.header-container')
+headerComponent.appendChild(Header());
+
+// console.log(Header())
