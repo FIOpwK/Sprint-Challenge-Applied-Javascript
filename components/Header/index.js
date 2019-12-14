@@ -16,12 +16,14 @@ function Header() {
 
     const span = document.createElement('span')
     span.classList.add('date')
+    span.textContent = 'SMARCH 28, 2019';
 
     const heading = document.createElement('h1')
     heading.textContent = 'Lambda Times';
 
     const span2 = document.createElement('span')
     span2.classList.add('temp')
+    span2.textContent = '98°';
 
     header.appendChild(span)
     header.appendChild(heading)
@@ -30,6 +32,7 @@ function Header() {
     return header;
 }
 
+// append to parent
 const headerComponent = document.querySelector('.header-container')
 headerComponent.appendChild(Header());
 
