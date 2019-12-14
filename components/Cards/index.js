@@ -6,10 +6,16 @@
 //   </div>
 // </div>
 //
+/*
+articles:
+javascript: (4)
+bootstrap: (3)
+technology: (3)
+jquery: (3) 
+node: (2) 
+*/
 
 
-// Create a card for each of the articles and add the card to the DOM.
-const cards_article = document.querySelector('.cards-container')
 
 // Create a function that will create DOM components
 // comp ~ component(s)
@@ -49,28 +55,32 @@ function cardCreation(comp) {
     return card;
 }
 
-// Send an HTTP GET request to the following address: 
+// Create a card for each of the articles and add the card to the DOM.
+const cards_article = document.querySelector('.cards-container')
 
+// Send an HTTP GET request to the following address: 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
 .then((res => {
     console.log(res)
     
-    /*
-    articles:
-    javascript: (4)
-    bootstrap: (3)
-    technology: (3)
-    jquery: (3) 
-    node: (2) 
-    */
-   // according to return of req
-   const articles = res.data.articles;
+    // according to return of req
+//    this time res.<item> works
+    const articles = res.data.articles;
+    // console.log(articles)
+    
+    // You will be creating a component for each 'article' in the list.
+    const article_list = Object.entries(articles);
+    console.log(article_list)
    
-   // You will be creating a component for each 'article' in the list.
-   const article_list = Object.entries(articles);
+    //use return for iteration component
+    // article_list.forEach( el => {
+    
+    // el[1].forEach(rel => {
+    //     cards_article.appendChild(cardCreation(rel))
+    // })
+// })
 
-   console.log(article_list)
-   
+
 
 }))
 
