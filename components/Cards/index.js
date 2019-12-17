@@ -42,7 +42,7 @@ function cardCreation(comp) {
     //     </div>
     //     <span>By {authors name}</span>
     const span = document.createElement('span')
-    span.textContent = `By ${res.name}`; 
+    span.textContent = `By ${comp.name}`; 
     
     
     card.appendChild(headline)
@@ -74,7 +74,7 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
    
     //use return for iteration component
     article_list.forEach( el => {
-    //      el[1].forEach(rel => {
+    
            cards_article.appendChild(cardCreation(el))
       })
     // })
