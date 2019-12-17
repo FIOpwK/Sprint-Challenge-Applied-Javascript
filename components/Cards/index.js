@@ -1,6 +1,6 @@
 // STEP 3: Create Article cards.
 // -----------------------
-// Stduy the response data you get back, closely.
+// Study the response data you get back, closely.
 // This won't be as easy as just iterating over an array though.
 //
 //   </div>
@@ -27,10 +27,12 @@ function cardCreation(comp) {
     
     //   <div class="headline">{Headline of article}</div>
     const headline = document.createElement('div')
+    headline.textContent = `${comp.headline}`
     
     //   <div class="author">
     const author = document.createElement('div')
     author.classList.add('author')
+    
     
     //     <div class="img-container">
     const img_container = document.createElement('div')
@@ -38,11 +40,11 @@ function cardCreation(comp) {
     
     //       <img src={url of authors image} />
     const image_of_authors = document.createElement('img')
-    image_of_authors.src = '';
+    image_of_authors.src = comp.authorPhoto;
     //     </div>
     //     <span>By {authors name}</span>
     const span = document.createElement('span')
-    span.textContent = `By ${comp.name}`; 
+    span.textContent = `By: ${comp.authorName}`;
     
     
     card.appendChild(headline)
@@ -61,23 +63,27 @@ const cards_article = document.querySelector('.cards-container')
 // Send an HTTP GET request to the following address: 
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
 .then((res => {
-    console.log(res)
+    console.log(res.data)
     
     // according to return of req
 //    this time res.<item> works
     const articles = res.data.articles;
-    console.log(articles)
+    // console.log(articles)
 
     // You will be creating a component for each 'article' in the list.
     const article_list = Object.entries(articles);
-    console.log(article_list)
+    // console.log(article_list)
    
     //use return for iteration component
     article_list.forEach( el => {
     
-           cards_article.appendChild(cardCreation(el))
+           el[1].forEach(card => {
+               cards_article.appendChild(cardCreation(card))
+
+           })
+           
       })
-    // })
+
 
 
 
